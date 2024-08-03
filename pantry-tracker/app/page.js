@@ -9,6 +9,7 @@ export default function Home() {
   const [inventory, setInventory] = useState([])
   const [open, setOpen] = useState(false) 
   const [itemName,setItemName]= useState(" ")
+  const [searchTerm, setSearchTerm] = useState("")
 
   const updateInventory = async () => {
     const snapshot = query (collection(firestore, 'inventory'))
@@ -56,6 +57,11 @@ export default function Home() {
   
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  // Filter inventory based on search term
+  const filteredInventory = inventory.filter(({ name }) =>
+    name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   return (
     <Box
@@ -109,6 +115,16 @@ export default function Home() {
           </Stack>
           </Box>
         </Modal>
+
+      <TextField
+        label="Search Items"
+        variant="outlined"
+        fullWidth
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}  // Update search term
+        sx={{ marginBottom: 2 }}  // Add some margin below the search field
+      />
+
       <Button
       variant="contained"
       onClick={() => {
