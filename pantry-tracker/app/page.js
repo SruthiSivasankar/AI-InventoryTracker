@@ -122,7 +122,7 @@ export default function Home() {
         alignItems="center"
         justifyContent="center">
           <Typography variant="h2" color="#333">
-            Pantry Items
+            Inventory Items
           </Typography>
         </Box>
       <Stack width="800px" height="300px" spacing={2} overflow="auto">

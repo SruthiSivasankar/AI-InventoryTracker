@@ -1,1 +1,1 @@
-# AI-PantryTracker
+# AI-InventoryTracker
